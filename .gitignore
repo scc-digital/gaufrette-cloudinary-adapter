@@ -1,0 +1,12 @@
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/vendor/
+/var/
+
+*~
+/.idea/
+right.sh
+.php_cs.cache
+.directory
+composer.lock

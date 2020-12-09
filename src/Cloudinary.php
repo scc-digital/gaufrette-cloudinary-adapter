@@ -15,6 +15,7 @@ use Gaufrette\Adapter;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Scc\Gaufrette\Cloudinary\Traits\StaticCalling;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class Cloudinary.
@@ -161,7 +162,7 @@ class Cloudinary implements Adapter
                 BaseCloudinary\Uploader::class,
                 'upload',
                 $tmpFile,
-                ['resource_type' => 'auto', 'public_id' => $this->computePath($key)]
+                ['resource_type' => $this->computeResourceType($key), 'public_id' => $this->computePath($key)]
             );
         } catch (BaseCloudinary\Error $e) {
             $this->logger->error($e->getMessage());
